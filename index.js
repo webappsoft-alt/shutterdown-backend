@@ -24,7 +24,7 @@ const userSchema = require('./Schema/userSchema');
 const ClientSchema = require('./Schema/AddCalenderViewSchema');
 const CalenderRouter = require('./Routes/AddCalenderViewRoutes');
 dotenv.config({ path: './config.env' });
-const PORT = process.env.PORT;
+// const PORT = process.env.PORT;
 // const path = require('path');
 
 app.use(cors());
@@ -63,9 +63,9 @@ app.use('/', ShooterEditorRouter);
 //   );
 // });
 
-app.listen(PORT, () => {
+app.listen(8000, () => {
   try {
-    console.log(`Server is running at port 5000`);
+    console.log(`Server is running at port 8000`);
   } catch (error) {
     console.log('Server Error');
   }
