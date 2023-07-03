@@ -8,17 +8,7 @@ const RegisterPostRequest = async (req, res) => {
         req.body;
       const existEmail = await userSchema.findOne({ email: email });
       if (existEmail) {
-        res.status(200).json({
-          message: 'user is already exists',
-          existEmail: { existEmail },
-          User: {
-            firstName: existEmail.firstName,
-            lastName: existEmail.lastName,
-            email: existEmail.email,
-            rollSelect: existEmail.rollSelect,
-            _id: existEmail._id,
-          },
-        });
+        res.status(404).json('Invalid Credentials');
       } else if (existEmail === null) {
         const user = await userSchema({
           firstName,
@@ -28,21 +18,6 @@ const RegisterPostRequest = async (req, res) => {
           password: password,
           rollSelect: rollSelect,
         });
-        // const { firstName, lastName, email, rollSelect } = user;
-        // const userData = {
-        //   firstName: firstName,
-        //   lastName: lastName,
-        //   email: email,
-        //   rollSelect: rollSelect,
-        // };
-
-        // const User = {
-        //   firstName: user.firstName,
-        //   lastName: user.lastName,
-        //   email: user.email,
-        //   rollSelect: user.rollSelect,
-        //   _id: user._id,
-        // };
         res.status(200).json({
           message: 'You are Registered Successfully',
           User: {
